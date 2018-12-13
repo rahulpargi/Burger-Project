@@ -18,7 +18,7 @@ const  burger = (props)=> {
             transformedIngredients= <p>Please Start adding Ingredients</p>
         }
         //reduce allows to turn array to something else
-        console.log(transformedIngredients)
+        
 
     return(
         <div className={classes.Burger}>
