@@ -1,20 +1,33 @@
-import React from 'react';
+import React,{Component} from 'react';
 import classes from './Modal.css';
-import Auxx from '../../../hoc/auxx';
+import Auxx from '../../../hoc/Auxx/auxx';
 import BackDrop from '../Backdrop/Backdrop'
-const modal = (props)=>(
-    <Auxx>
-        <BackDrop show={props.show} clicked={props.modalClosed}/>
+class Modal extends Component{
+    
+    shouldComponentUpdate(nextProps,nextState){
+        return nextProps.show !== this.props.show
+        
+       
+    }
+    componentWillUpdate(){
+        console.log('modal')
+    }
+    render(){
+        return(
+            <Auxx>
+        <BackDrop show={this.props.show} clicked={this.props.modalClosed}/>
     <div 
         className={classes.Modal}
         style={{
-            transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
-            opacity:props.show ? '1':'0'
+            transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+            opacity:this.props.show ? '1':'0'
         }}>
-        {props.children}
+        {this.props.children}
     </div>
     </Auxx>
-);
+        );
+    }
+};
 
 
-export default modal;
+export default Modal;
